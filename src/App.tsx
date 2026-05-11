@@ -3,20 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import BentoGrid from "./components/BentoGrid";
-import Footer from "./components/Footer";
+import { ThemeProvider } from "./ThemeContext";
+import Home from "./components/Home";
 
 export default function App() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <Hero />
-        <BentoGrid />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <Home />
+    </ThemeProvider>
   );
 }

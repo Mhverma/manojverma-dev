@@ -4,17 +4,30 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --f-display: "Inter", sans-serif;
+  --color-dark-bg: #1a1a1a;
+  --color-dark-secondary: #2a2a2a;
+  --color-dark-border: #333333;
 }
 
 @layer base {
   body {
-    @apply bg-[#fcfcfc] text-[#111111] font-sans antialiased selection:bg-black selection:text-white;
+    @apply font-sans antialiased selection:bg-black selection:text-white;
     letter-spacing: -0.01em;
   }
   
   h1, h2, h3, h4 {
     @apply tracking-tighter;
     line-height: 0.9;
+  }
+
+  /* Light mode (default) */
+  body {
+    @apply bg-white text-[#111111];
+  }
+
+  /* Dark mode */
+  .dark body {
+    @apply bg-[#1a1a1a] text-white;
   }
 }
 
@@ -23,8 +36,16 @@
     @apply bg-white border border-slate-100 rounded-3xl p-8 transition-all duration-500 hover:border-slate-300 hover:shadow-2xl hover:shadow-black/5 flex flex-col justify-between relative overflow-hidden;
   }
 
+  .dark .bento-card {
+    @apply bg-[#2a2a2a] border-[#333333] hover:border-[#444444] hover:shadow-2xl hover:shadow-white/5;
+  }
+
   .status-badge {
     @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-100 text-[10px] uppercase font-bold tracking-widest text-slate-500 shadow-sm;
+  }
+
+  .dark .status-badge {
+    @apply bg-[#2a2a2a] border-[#333333] text-gray-400;
   }
   
   .status-dot {
@@ -34,6 +55,10 @@
   
   .glass {
     @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+
+  .dark .glass {
+    @apply bg-[#2a2a2a]/70 border-[#333333]/20;
   }
 }
 
