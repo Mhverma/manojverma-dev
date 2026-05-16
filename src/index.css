@@ -425,3 +425,19 @@
   transform: translateY(-1px);
   border-color: #4f8ef7;
 }
+
+/* ─── Projects section animations ─── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}

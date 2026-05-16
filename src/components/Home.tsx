@@ -3,6 +3,7 @@ import { Sun, Moon } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import Header from "./Header";
 import Footer from "./Footer";
+import ProjectsSection from "./ProjectsSection";
 
 export default function Home() {
   const { isDark, toggle } = useTheme();
@@ -213,6 +214,11 @@ export default function Home() {
               </div>
             </div>
           </section>
+
+          {/* Projects Section */}
+          <div className={`${isDark ? "bg-[#0d1117]" : "bg-white"}`}>
+            <ProjectsSection />
+          </div>
         </main>
 
         <Footer />
