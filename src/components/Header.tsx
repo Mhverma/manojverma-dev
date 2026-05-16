@@ -70,7 +70,7 @@ export default function Header() {
       </nav>
 
       {/* Resume Button */}
-      <div className="hidden md:block">
+      <div className="block">
         <a
           href="/resume.pdf"
           target="_blank"

@@ -58,7 +58,7 @@ export default function Home() {
             >
               <div className="relative w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/src/assets/MV.png" 
+                  src="/MV.png"
                   alt="Manoj Verma - Full Stack Engineer and Solution Architect"
                   className="w-full h-auto object-contain"
                 />
