@@ -20,14 +20,28 @@
     line-height: 0.9;
   }
 
-  /* Light mode (default) */
+  /* Light mode (default) - warm off-white background */
   body {
-    @apply bg-white text-[#111111];
+    @apply bg-[#f9f9f7] text-[#111111];
   }
 
   /* Dark mode */
   .dark body {
     @apply bg-[#1a1a1a] text-white;
+  }
+
+  /* Scroll animation */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -64,3 +78,247 @@
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Connect Section ─── */
+.connect-section {
+  padding: 72px 64px 96px;
+  background-color: #f5f4f0;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.dark .connect-section {
+  background-color: #1a1a1a;
+}
+
+/* ─── Label ─── */
+.connect-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin: 0 0 16px;
+  transition: color 0.3s ease;
+}
+
+.dark .connect-label {
+  color: #6b7280;
+}
+
+/* ─── Headline — CRITICAL: must span full page width ─── */
+.connect-headline {
+  font-size: clamp(72px, 12vw, 140px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin: 0 0 56px;
+  width: 100%;
+  max-width: none;
+}
+
+.headline-solid {
+  display: block;
+  color: #0d1b2a;
+  transition: color 0.3s ease;
+}
+
+.dark .headline-solid {
+  color: #ffffff;
+}
+
+.headline-ghost {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 2px #b0b8c8;
+  text-stroke: 2px #b0b8c8;
+  position: relative;
+  transition: -webkit-text-stroke 0.3s ease, text-stroke 0.3s ease;
+}
+
+.dark .headline-ghost {
+  -webkit-text-stroke: 2px #4b5563;
+  text-stroke: 2px #4b5563;
+}
+
+/* ─── Dot — inline inside GREAT., not a separate element ─── */
+.headline-dot {
+  color: #0d1b2a;
+  -webkit-text-stroke: 0;
+  font-size: 0.45em;
+  vertical-align: middle;
+  margin-left: 4px;
+  display: inline;
+  transition: color 0.3s ease;
+}
+
+.dark .headline-dot {
+  color: #ffffff;
+}
+
+/* ─── Contact row: email LEFT, socials immediately RIGHT ─── */
+.connect-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+/* ─── Email block ─── */
+.connect-email {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.email-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0d1b2a;
+  text-decoration: none;
+  border-bottom: 1.5px solid #0d1b2a;
+  padding-bottom: 3px;
+  transition: all 0.3s ease;
+  width: fit-content;
+  position: relative;
+}
+
+.dark .email-cta {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.email-cta:hover {
+  opacity: 0.7;
+  transform: translateX(4px);
+}
+
+.email-cta:hover svg {
+  transform: rotate(-45deg) scale(1.2);
+}
+
+.email-cta svg {
+  transition: transform 0.3s ease;
+}
+
+.email-address {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease;
+}
+
+.dark .email-address {
+  color: #6b7280;
+}
+
+/* ─── Socials block ─── */
+.connect-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.socials-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin: 0 0 12px;
+  transition: color 0.3s ease;
+}
+
+.dark .socials-label {
+  color: #6b7280;
+}
+
+.socials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0d1b2a;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
+  position: relative;
+  padding: 6px 0;
+}
+
+.dark .social-link {
+  color: #ffffff;
+}
+
+.social-link:hover {
+  opacity: 0.7;
+  transform: translateX(6px);
+}
+
+.social-link:hover .social-icon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.social-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .connect-section {
+    padding: 56px 24px 72px;
+  }
+
+  .connect-headline {
+    font-size: clamp(52px, 14vw, 80px);
+    margin-bottom: 40px;
+  }
+
+  .connect-row {
+    gap: 40px;
+  }
+
+  .socials-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+  
+  .social-link {
+    padding: 4px 0;
+  }
+  
+  .email-cta {
+    padding-bottom: 2px;
+  }
+}
+
+/* ─── Dark mode footer ─── */
+.dark footer {
+  background-color: #1a1a1a;
+  border-top-color: #333333;
+}
+
+.dark footer p,
+.dark footer span {
+  color: #9ca3af;
+}

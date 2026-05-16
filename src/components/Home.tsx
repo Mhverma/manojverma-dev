@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "../ThemeContext";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Home() {
   const { isDark, toggle } = useTheme();
@@ -41,20 +43,8 @@ export default function Home() {
 
   return (
     <div className={isDark ? "dark" : ""}>
+      <Header />
       <div className={`transition-colors duration-300 ${isDark ? "bg-[#1a1a1a] text-white" : "bg-white text-[#111111]"}`}>
-        {/* Header with Theme Toggle */}
-        <header className={`sticky top-0 z-50 ${isDark ? "bg-[#1a1a1a]/95 border-[#333333]" : "bg-white/95 border-slate-100"} border-b backdrop-blur-md`}>
-          <nav className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-            <div className="text-2xl font-black italic tracking-tighter">MV.</div>
-            <button
-              onClick={toggle}
-              className={`p-2 rounded-lg transition-colors ${isDark ? "bg-[#333333] hover:bg-[#444444]" : "bg-slate-100 hover:bg-slate-200"}`}
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-          </nav>
-        </header>
-
         {/* Main Content */}
         <main className="max-w-7xl mx-auto px-6 py-20">
           {/* Hero Section */}
@@ -93,39 +83,65 @@ export default function Home() {
                 <p className={`text-lg font-semibold tracking-wide ${isDark ? "text-gray-400" : "text-slate-500"}`}>
                   Lead Engineer @ Singapore Airlines
                 </p>
+                
+                {/* Value Proposition Tagline */}
+                <p className={`text-lg leading-relaxed mt-4 mb-6 ${isDark ? "text-gray-300" : "text-slate-600"}`}>
+                  I help enterprises ship resilient cloud systems and AI-powered workflows — from architecture to production.
+                </p>
               </div>
 
-              {/* Expertise Tags */}
+              {/* Expertise Tags - Colour Coded */}
               <div className="space-y-4">
                 <p className={`text-sm font-bold uppercase tracking-widest ${isDark ? "text-gray-500" : "text-slate-400"}`}>
                   Core Expertise
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  {expertise.map((skill) => (
+                  {[
+                    { skill: "Full Stack Engineer", color: "bg-sky-100 text-sky-800" },
+                    { skill: "Solution Architect", color: "bg-purple-100 text-purple-800" },
+                    { skill: "Cloud Infrastructure Expert", color: "bg-green-100 text-green-800" },
+                    { skill: "AI Systems Pioneer", color: "bg-orange-100 text-orange-800" }
+                  ].map((item) => (
                     <span
-                      key={skill}
-                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${isDark ? "bg-[#333333] text-white border border-[#444444] hover:border-white" : "bg-slate-100 text-slate-900 border border-slate-200 hover:border-slate-400"}`}
+                      key={item.skill}
+                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${isDark ? "bg-[#333333] text-white" : item.color}`}
                     >
-                      {skill}
+                      {item.skill}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons - Reordered: View Work (primary) first, Get in Touch (secondary) */}
               <div className="flex gap-4 pt-4">
                 <a
-                  href="mailto:manojkumarhverma@gmail.com"
-                  className={`px-8 py-3 rounded-lg font-bold transition-all ${isDark ? "bg-white text-black hover:scale-105" : "bg-black text-white hover:scale-105"}`}
-                >
-                  Get in Touch
-                </a>
-                <a
                   href="#work"
-                  className={`px-8 py-3 rounded-lg font-bold transition-all border ${isDark ? "border-white text-white hover:bg-white hover:text-black" : "border-black text-black hover:bg-black hover:text-white"}`}
+                  className={`px-8 py-3 rounded-lg font-bold transition-all ${isDark ? "bg-white text-black hover:scale-105" : "bg-slate-900 text-white hover:scale-105"}`}
                 >
                   View Work
                 </a>
+                <a
+                  href="mailto:manojkumarhverma@gmail.com"
+                  className={`px-8 py-3 rounded-lg font-bold transition-all border ${isDark ? "border-white text-white hover:bg-white hover:text-black" : "border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white"}`}
+                >
+                  Get in Touch
+                </a>
+              </div>
+
+              {/* Social Proof Strip */}
+              <div className={`flex gap-8 pt-6 mt-6 border-t ${isDark ? "border-gray-700" : "border-slate-200"}`}>
+                <div className="flex flex-col gap-1">
+                  <span className={`text-xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}>12+</span>
+                  <span className={`text-xs ${isDark ? "text-gray-400" : "text-slate-600"}`}>Years experience</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className={`text-xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}>50+</span>
+                  <span className={`text-xs ${isDark ? "text-gray-400" : "text-slate-600"}`}>Projects delivered</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className={`text-xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Lead</span>
+                  <span className={`text-xs ${isDark ? "text-gray-400" : "text-slate-600"}`}>@ Singapore Airlines</span>
+                </div>
               </div>
             </motion.div>
           </section>
@@ -146,8 +162,25 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.2 }}
-                    className={`p-8 rounded-2xl ${isDark ? "bg-[#2a2a2a] border border-[#333333] hover:border-[#444444]" : "bg-slate-50 border border-slate-200 hover:border-slate-300"} transition-all`}
+                    className={`relative p-8 rounded-2xl transition-all ${
+                      index === 0
+                        ? isDark 
+                          ? "bg-[#2a2a2a] border-2 border-slate-900 hover:border-slate-800" 
+                          : "bg-slate-50 border-2 border-slate-900 hover:border-slate-800"
+                        : isDark 
+                          ? "bg-[#2a2a2a] border border-[#333333] hover:border-[#444444]" 
+                          : "bg-slate-50 border border-slate-200 hover:border-slate-300"
+                    }`}
                   >
+                    {index === 0 && (
+                      <div className="mb-4 inline-block">
+                        <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
+                          isDark ? "bg-slate-800 text-slate-200" : "bg-slate-200 text-slate-800"
+                        }`}>
+                          Core service
+                        </span>
+                      </div>
+                    )}
                     <h3 className="text-xl font-bold mb-6">{service.title}</h3>
                     <ul className="space-y-4">
                       {service.items.map((item, idx) => (
@@ -157,6 +190,13 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
+                    <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+                      <p className="text-sm font-semibold text-green-600 dark:text-green-400">
+                        {index === 0 && "→ AI workflows your team can ship and trust"}
+                        {index === 1 && "→ Scalable infrastructure built for resilience"}
+                        {index === 2 && "→ Legacy modernization that drives revenue"}
+                      </p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -182,14 +222,7 @@ export default function Home() {
           </section>
         </main>
 
-        {/* Footer */}
-        <footer className={`border-t ${isDark ? "border-[#333333] bg-[#0f0f0f]" : "border-slate-100"}`}>
-          <div className="max-w-7xl mx-auto px-6 py-12 text-center">
-            <p className={`text-sm font-semibold tracking-widest ${isDark ? "text-gray-500" : "text-slate-500"}`}>
-              © 2024 Manoj Verma. Available for innovative projects.
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
