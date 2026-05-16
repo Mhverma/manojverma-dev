@@ -322,3 +322,106 @@
 .dark footer span {
   color: #9ca3af;
 }
+
+/* ─── Logo / Brand Mark ─── */
+.logo-mark {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+.logo-core {
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
+.logo-brace {
+  color: #4f8ef7; /* accent color */
+  font-weight: 700;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* make the monogram slightly more compact */
+.logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.25rem;
+  user-select: none;
+  line-height: 1;
+}
+
+.logo-bracket {
+  color: #4f8ef7;        /* accent blue */
+  font-weight: 200;      /* ultra-thin — feels structural */
+  font-size: 1.5rem;     /* slightly larger so brackets frame MV */
+  opacity: 0.7;
+}
+
+.logo-m {
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+}
+
+.logo-v {
+  color: #4f8ef7;        /* same accent blue as brackets */
+  font-weight: 900;
+  letter-spacing: -1.5px;
+}
+
+/* ─── Hero spacing overrides ─── */
+.hero-content h1 { margin-bottom: 0.25rem; }
+.hero-content h2 { margin-bottom: 0.4rem; }
+.hero-content .company { margin-bottom: 0.75rem; }
+.hero-content .bio { margin-bottom: 1rem; }
+.hero-content .expertise-tags { margin-bottom: 1.5rem; }
+
+/* ─── CTA buttons ─── */
+.btn-primary {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  border: 2px solid #ffffff;
+  font-weight: 700;
+}
+.btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-weight: 600;
+}
+.btn-primary:hover { background-color: #e5e5e5; }
+.btn-secondary:hover { background-color: rgba(255,255,255,0.06); }
+
+/* ─── Expertise tags ─── */
+.expertise-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+.tag {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: transparent;
+}
+.dark .tag, .dark-tag {
+  background: rgba(255,255,255,0.03);
+}
+
+/* ─── Resume CTA polish ─── */
+.resume-cta {
+  transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+.resume-cta:hover {
+  box-shadow: 0 6px 20px rgba(79,142,247,0.12);
+  transform: translateY(-1px);
+  border-color: #4f8ef7;
+}

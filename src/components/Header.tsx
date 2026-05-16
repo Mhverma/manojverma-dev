@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -15,11 +16,12 @@ export default function Header() {
       const sections = document.querySelectorAll('section[id]');
       let current = '#hero';
       
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+      sections.forEach((section) => {
+        const el = section as HTMLElement;
+        const sectionTop = el.offsetTop;
+        const sectionHeight = el.clientHeight;
         if (window.scrollY >= sectionTop - 200) {
-          current = `#${section.getAttribute('id')}`;
+          current = `#${el.getAttribute('id')}`;
         }
       });
       
@@ -47,7 +49,7 @@ export default function Header() {
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 md:px-8 md:py-4 pointer-events-auto bg-slate-900 text-white shadow-md"
     >
       <a href="#hero" aria-label="Home" className="text-2xl font-extrabold tracking-tight text-white">
-        MV.
+        <Logo />
       </a>
 
       {/* Desktop nav */}
@@ -75,7 +77,7 @@ export default function Header() {
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 border border-white/30 text-sm font-medium rounded-md text-white hover:bg-white/10 transition-colors"
+          className="resume-cta px-4 py-2 border border-white/30 text-sm font-medium rounded-md text-white hover:bg-white/10 transition-colors"
         >
           Resume ↗
         </a>
@@ -112,7 +114,7 @@ export default function Header() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 block w-full text-center px-4 py-3 bg-white text-slate-900 rounded-md font-medium"
+                className="mt-2 block w-full text-center px-4 py-3 bg-white text-slate-900 rounded-md font-medium resume-cta"
               >
                 Resume ↗
               </a>

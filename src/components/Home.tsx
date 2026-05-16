@@ -8,10 +8,10 @@ export default function Home() {
   const { isDark, toggle } = useTheme();
 
   const expertise = [
-    "Full Stack Engineer",
-    "Solution Architect",
-    "Cloud Infrastructure Expert",
-    "AI Systems Pioneer"
+    "Full Stack Development",
+    "Solution Architecture",
+    "Cloud Infrastructure",
+    "AI/ML Integration"
   ];
 
   const services = [
@@ -67,11 +67,11 @@ export default function Home() {
             </motion.div>
 
             {/* Right - Profile Info */}
-            <motion.div
+              <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8"
+              className="space-y-8 hero-content"
             >
               <div>
                 <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
@@ -95,36 +95,28 @@ export default function Home() {
                 <p className={`text-sm font-bold uppercase tracking-widest ${isDark ? "text-gray-500" : "text-slate-400"}`}>
                   Core Expertise
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    { skill: "Full Stack Engineer", color: "bg-sky-100 text-sky-800" },
-                    { skill: "Solution Architect", color: "bg-purple-100 text-purple-800" },
-                    { skill: "Cloud Infrastructure Expert", color: "bg-green-100 text-green-800" },
-                    { skill: "AI Systems Pioneer", color: "bg-orange-100 text-orange-800" }
-                  ].map((item) => (
-                    <span
-                      key={item.skill}
-                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${isDark ? "bg-[#333333] text-white" : item.color}`}
-                    >
-                      {item.skill}
+                <div className="expertise-tags">
+                  {expertise.map((skill) => (
+                    <span key={skill} className={`tag ${isDark ? "dark-tag" : ""}`}>
+                      {skill}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* CTA Buttons - Reordered: View Work (primary) first, Get in Touch (secondary) */}
+              {/* CTA Buttons - Get in Touch primary, View Work secondary */}
               <div className="flex gap-4 pt-4">
                 <a
-                  href="#work"
-                  className={`px-8 py-3 rounded-lg font-bold transition-all ${isDark ? "bg-white text-black hover:scale-105" : "bg-slate-900 text-white hover:scale-105"}`}
-                >
-                  View Work
-                </a>
-                <a
                   href="mailto:manojkumarhverma@gmail.com"
-                  className={`px-8 py-3 rounded-lg font-bold transition-all border ${isDark ? "border-white text-white hover:bg-white hover:text-black" : "border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white"}`}
+                  className={`btn-primary px-6 py-3 rounded-lg transition-all ${isDark ? "" : ""}`}
                 >
                   Get in Touch
+                </a>
+                <a
+                  href="#work"
+                  className={`btn-secondary px-6 py-3 rounded-lg transition-all`}
+                >
+                  View Work
                 </a>
               </div>
 
@@ -143,10 +135,11 @@ export default function Home() {
                   <span className={`text-xs ${isDark ? "text-gray-400" : "text-slate-600"}`}>@ Singapore Airlines</span>
                 </div>
               </div>
+
             </motion.div>
           </section>
 
-          {/* Services Section */}
+            {/* Services Section */}
           <section className="mb-32">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
